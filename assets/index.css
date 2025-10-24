@@ -120,3 +120,11 @@ main {
   border-bottom: 1px solid #eee;
   padding: 0.5rem;
 }
+
+
+.order-summary__product-image .product-image__wrapper {
+  max-width: 120px;
+}
+.product-image__picture {
+  max-width: 100%;
+}
