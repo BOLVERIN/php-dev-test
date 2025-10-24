@@ -80,10 +80,19 @@ main {
   padding: 0.5rem 0;
 }
 
-.form-field__note {
+.form-field-checkbox__label {
+  cursor: pointer;
+}
+
+.form-field__note,
+.form-field-checkbox__note {
   font-size: 0.8rem;
   color: #666;
   padding: 0.5rem 0 0;
+}
+
+.form-field-checkbox__note {
+  font-weight: normal;
 }
 
 .entry,
