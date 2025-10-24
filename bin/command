@@ -1,0 +1,37 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+use silverorange\DevTest\Command;
+use silverorange\DevTest\Config;
+use silverorange\DevTest\Database;
+
+if (PHP_SAPI !== 'cli') {
+  echo 'bin/command must be run as a CLI application';
+  exit(1);
+}
+
+try {
+  require __DIR__ . '/../vendor/autoload.php';
+} catch (\Exception $e) {
+  echo 'Autoload error: ' . $e->getMessage();
+
+  exit(1);
+}
+
+try {
+  $config = new Config();
+  $db = (new Database($config->dsn))->getConnection();
+  $app = new Command($db);
+
+  exit($app->run() ? 1 : 0);
+} catch (\Throwable $e) {
+  while ($e) {
+    echo $e->getMessage();
+    echo $e->getTraceAsString();
+    echo "\n\n";
+    $e = $e->getPrevious();
+  }
+
+  exit(1);
+}
