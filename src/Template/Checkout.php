@@ -117,6 +117,15 @@ class Checkout extends Layout
                             </div>
                         </div>
                     </div>
+                    <div class="frame">
+                        <div class="frame__contents">
+                            <div class="form-field">
+                                <div class="form-field__contents">
+                                    <input type="submit" name="submit" id="submit" class="entry--submit-button" value="Place Order" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             HTML;
     }

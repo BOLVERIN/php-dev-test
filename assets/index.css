@@ -58,6 +58,9 @@ main {
   margin: 2rem auto 0;
   box-shadow: inset 0 -0.125rem 0.25rem rgb(0 0 0 / 10%);
 }
+.frame:last-child::after {
+  content: none;
+}
 
 .frame__title {
   color: #888;
@@ -108,6 +111,23 @@ main {
 .textarea:focus {
   outline: 0.125rem solid hsl(206 71% 53%);
   box-shadow: inset 0 0.125rem 0.25rem hsl(206 71% 53% / 20%);
+}
+
+.entry--submit-button {
+  background: hsl(206 71% 53%);
+  color: #fff;
+  border: 0;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0.125rem 0.25rem rgb(0 0 0 / 10%);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: 1rem 2rem;
+  display: block;
+  width: 100%;
+}
+.entry--submit-button:hover {
+  background: hsl(206 71% 43%);
 }
 
 .order-summary {
