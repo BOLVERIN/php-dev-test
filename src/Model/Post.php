@@ -73,7 +73,7 @@ class Post
 
     public static function isValidUuid(string $uuid): bool
     {
-        return (bool)(preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i', $uuid));
+        return (bool) (preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i', $uuid));
     }
 
     public static function isValidString(string $string, ?int $limit = 0): bool

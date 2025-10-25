@@ -4,6 +4,4 @@ namespace silverorange\DevTest\Command;
 
 use Exception;
 
-class InvalidCommandException extends Exception
-{
-}
+class InvalidCommandException extends Exception {}
