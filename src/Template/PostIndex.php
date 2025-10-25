@@ -13,11 +13,11 @@ class PostIndex extends Layout
         /** @var Post $post */
         foreach ($context->list as $post) {
             $data .= <<<HTML
-            <div class="post-preview">
-                <a class="post-preview__link" href="/posts/{$post->id}">{$post->title}</a>
-                <span class="post-preview__author"> by {$post->author}</span>
-            </div>
-            HTML;
+                <div class="post-preview">
+                    <a class="post-preview__link" href="/posts/{$post->id}">{$post->title}</a>
+                    <span class="post-preview__author"> by {$post->author}</span>
+                </div>
+                HTML;
 
         }
 

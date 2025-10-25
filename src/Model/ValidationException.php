@@ -2,7 +2,4 @@
 
 namespace silverorange\DevTest\Model;
 
-class ValidationException extends \Exception
-{
-
-}
+class ValidationException extends \Exception {}
