@@ -31,6 +31,14 @@ class Post
             throw new ValidationException(implode(PHP_EOL, $errors));
         }
 
+        return self::createFromArray($data);
+    }
+
+    /**
+     * @param array<string> $data
+     */
+    public static function createFromArray(array $data): Post
+    {
         $post = new Post();
         $post->id = $data['id'];
         $post->title = $data['title'];

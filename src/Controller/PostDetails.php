@@ -2,18 +2,15 @@
 
 namespace silverorange\DevTest\Controller;
 
+use Michelf\Markdown;
+use PDO;
 use silverorange\DevTest\Context;
+use silverorange\DevTest\Model\Post;
 use silverorange\DevTest\Template;
 use silverorange\DevTest\Model;
 
 class PostDetails extends Controller
 {
-    /**
-     * TODO: When this property is assigned in loadData this PHPStan override
-     * can be removed.
-     *
-     * @phpstan-ignore property.unusedType
-     */
     private ?Model\Post $post = null;
 
     public function getContext(): Context
@@ -25,7 +22,8 @@ class PostDetails extends Controller
             $context->content = "A post with id {$this->params[0]} was not found.";
         } else {
             $context->title = $this->post->title;
-            $context->content = $this->params[0];
+            $context->content = Markdown::defaultTransform($this->post->body);
+            $context->author = $this->post->author;
         }
 
         return $context;
@@ -51,7 +49,21 @@ class PostDetails extends Controller
 
     protected function loadData(): void
     {
-        // TODO: Load post from database here. $this->params[0] is the post id.
-        $this->post = null;
+        if (empty($this->params[0])) {
+            $this->post = null;
+
+            return;
+        }
+        $stmt = $this->db->prepare("SELECT posts.*, authors.full_name AS author FROM posts LEFT JOIN authors ON posts.author = authors.id WHERE posts.id = :id LIMIT 1");
+        $stmt->execute(['id' => $this->params[0]]);
+        $post = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (empty($post) || !is_array($post)) {
+            $this->post = null;
+
+            return;
+        }
+
+        // @phpstan-ignore-next-line argument.type
+        $this->post = Post::createFromArray($post);
     }
 }
