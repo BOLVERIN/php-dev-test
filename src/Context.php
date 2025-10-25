@@ -8,4 +8,8 @@ class Context
     public string $title = '';
     public string $content = '';
     public string $author = '';
+    /**
+     * @var array<mixed>
+     */
+    public array $list = [];
 }

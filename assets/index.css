@@ -148,3 +148,10 @@ main {
 .product-image__picture {
   max-width: 100%;
 }
+
+.post-preview {
+  padding: .5rem 0;
+}
+.post-preview__link {
+  font-size: 1.5rem;
+}
